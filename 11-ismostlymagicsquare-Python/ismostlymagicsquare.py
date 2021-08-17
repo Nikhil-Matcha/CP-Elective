@@ -13,6 +13,39 @@
 #   [ 2, 1]]
 # Each row and each column add to 3, but one diagonal adds to 2 and the other to 4.
 
+def isRowMagic(a):
+	s = sum(a[0])
+	for i in range(len(a)):
+		if sum(a[i]) != s:
+			return False
+	return True
+
+def isColumnMagic(a):
+	s = 0
+	for i in range(len(a[0])):
+		s += a[0][i]
+	for j in range(len(a[0])):
+		x = 0
+		for i in range(len(a)):
+			x += a[i][j]
+		if x != s:
+			return False
+	return True
+
+def isDiagonalMagic(a):
+	s = 0
+	for i in range(len(a)):
+		s += a[i][i]
+	t = 0
+	n = len(a)
+	for i in range(len(a)):
+		t += a[n-i-1][i]
+	if s != t:
+		return False
+	return True
+
 def ismostlymagicsquare(a):
 	# Your code goes here
-	pass
+	if isRowMagic(a) and isColumnMagic(a) and isDiagonalMagic(a):
+		return True
+	return False
