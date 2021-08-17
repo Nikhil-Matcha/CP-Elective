@@ -11,7 +11,20 @@
 
 
 def fun_applycaesarcipher(msg, shift):
-	return ""
+	caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	small = "abcdefghijklmnopqrstuvwxyz"
+	res = ""
+	for c in msg:
+		idx = caps.find(c)
+		if idx != -1:
+			res += caps[(idx + shift)%26]
+		else:
+			idx = small.find(c)
+			if idx != -1:
+				res += small[(idx + shift)%26]
+			else:
+				res += c
+	return res
 
 
 
