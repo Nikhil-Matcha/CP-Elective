@@ -35,4 +35,25 @@
 
 def makeMagicSquare(n):
     # Your code goes here...
-    pass
+    if n<0 or n%2==0:
+        return None
+    res = [[0 for i in range(n)] for j in range(n)]
+    x = n//2
+    y = n-1
+    for i in range(1, n*n + 1):
+        if x == -1 and y == n:
+            x = 0
+            y = n-2
+        elif x == -1:
+            x = n-1
+        elif y == n:
+            y = 0
+        elif res[x][y] != 0:
+            x = x+1
+            y = y-2
+        res[x][y] = i
+        x = x-1
+        y = y+1
+    return res
+
+print(makeMagicSquare(5))
