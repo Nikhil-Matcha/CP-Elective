@@ -14,6 +14,26 @@
 # assert(nth_happy_number(7) == 28)
 # assert(nth_happy_number(8) == 31)
 
+def sumOfSquareOfDigits(n):
+	res = 0
+	while(n > 0):
+		dig = n % 10
+		res += (dig*dig)
+		n //= 10
+	return res
+
+def isHappy(n):
+	while(n != 1 and n != 4):
+		n = sumOfSquareOfDigits(n)
+	if n==1:
+		return True
+	return False
 
 def nth_happy_number(n):
-	return 0
+	c = 0
+	x = 1
+	while c < n:
+		if isHappy(x):
+			c += 1
+		x += 1
+	return x-1
