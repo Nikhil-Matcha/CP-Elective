@@ -9,5 +9,21 @@
 
 import math
 
+def isKaprekar(n):
+    x = n**2
+    num = str(x)
+    l = len(num)
+    for i in range(1,l):
+        m = int(num[:i]) + int(num[i:])
+        if m==n and int(num[i:]) != 0: return True
+    return False
+
 def fun_nth_kaprekarnumber(n):
-    return 1;
+    if n==0: return 1
+    c=0
+    x=1
+    while(c<n):
+        if isKaprekar(x):
+            c += 1
+        x += 1
+    return x-1
